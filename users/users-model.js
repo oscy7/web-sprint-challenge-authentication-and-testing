@@ -2,7 +2,7 @@ const db = require('../data/dbConfig')
 
 async function add(user) {
     const [id] = await db("users").insert(user)
-    return findById(id)
+    return getById(id)
 }
 
 function findBy(filter){
