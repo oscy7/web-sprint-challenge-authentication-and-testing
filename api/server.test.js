@@ -20,10 +20,10 @@ afterAll(async () => {
 
 
 
-describe('GET /', () => {
-  test('returns a status 200 OK', async () => {
+describe('Get Jokes /', () => {
+  test('returns a status 401 because token auth wont give access', async () => {
       const res = await request(server).get('/api/jokes')
-      expect(res.status).toBe(200)
+      expect(res.status).toBe(401)
   })
 })
 
