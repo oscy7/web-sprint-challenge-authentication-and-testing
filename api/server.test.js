@@ -2,7 +2,6 @@
 const request = require('supertest')
 const server = require('./server')
 const db = require('../data/dbConfig')
-const user = require('./auth/auth-router')
 const bcrypt = require('bcryptjs')
 
 test('sanity', () => {
@@ -46,9 +45,6 @@ describe('Login: post to/api/auth/login', () => {
   
     it('responds with the correct status and message on invalid credentials', async () => {
       let res = await request(server).post('/api/auth/login').send({ username: 'Padre', password: '12345' })
-      expect(res.body.message).toMatch(/invalid credentials/i)
-      expect(res.status).toBe(401)
-      res = await request(server).post('/api/auth/login').send({ username: 'Padre', password: '1234' })
       expect(res.body.message).toMatch(/invalid credentials/i)
       expect(res.status).toBe(401)
     })
