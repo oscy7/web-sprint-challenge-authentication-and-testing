@@ -18,8 +18,6 @@ afterAll(async () => {
   await db.destroy()
 })
 
-
-
 describe('Get Jokes /', () => {
   test('returns a status 401 because token auth wont give access', async () => {
       const res = await request(server).get('/api/jokes')
@@ -40,8 +38,7 @@ describe('Register: Post to /api/auth/register', () => {
   })
 });
 
-
-  describe('Login: post to/api/auth/login', () => {
+describe('Login: post to/api/auth/login', () => {
     it('responds with the correct message on valid credentials', async () => {
       const res = await request(server).post('/api/auth/login').send({ username: 'Dad', password: '1234' })
       expect(res.body.message).toMatch(/Welcome back Dad/i)
